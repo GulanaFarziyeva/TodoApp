@@ -1,6 +1,8 @@
 import TodoItem from "./TodoItem";
+import { useSelector } from "react-redux";
 
-function TodoList({ todos }) {
+function TodoList() {
+  const { todos } = useSelector((state) => state.todo);
   return (
     <div className="todo__list">
       <div className="todo__list__title">
@@ -18,7 +20,7 @@ function TodoList({ todos }) {
         ) : (
           <ul className="todo__list__inner">
             {todos.map((todo, key) => (
-              <TodoItem key={todo} todo={todo} />
+              <TodoItem key={key} todo={todo} />
             ))}
           </ul>
         )}
